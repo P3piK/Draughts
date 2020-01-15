@@ -7,7 +7,7 @@ class Checker:
 
     def isMoveAvailable(self, dest):
         ret = False
-        if self.player == 0:
+        if self.player.id == 1:
             if dest == (self.posX + 1, self.posY + 1) or dest == (self.posX - 1, self.posY + 1):
                 ret = True
         else:
@@ -16,6 +16,20 @@ class Checker:
         return ret
 
     def move(self, dest):
-        if self.isMoveAvailable(dest):
-            self.posX = dest[0]
-            self.posY = dest[1]
+        self.posX = dest[0]
+        self.posY = dest[1]
+
+    def isJumpAvailable(self, dest):
+        ret = False
+        if self.player.id == 1:
+            if dest == (self.posX + 2, self.posY + 2) or dest == (self.posX - 2, self.posY + 2):
+                ret = True
+        else:
+            if dest == (self.posX + 2, self.posY - 2) or dest == (self.posX - 2, self.posY - 2):
+                ret = True
+
+        return ret
+
+    def jump(self, dest):
+        self.posX = dest[0]
+        self.posY = dest[1]
