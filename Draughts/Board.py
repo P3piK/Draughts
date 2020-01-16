@@ -47,3 +47,9 @@ class Board:
                            (255,255,0), 
                            (int(self.SQUARE_SIZE / 2 + checker.posX * self.SQUARE_SIZE), int(self.SQUARE_SIZE / 2 + checker.posY * self.SQUARE_SIZE)), 
                            checker.radius, 3)
+
+    def isAnyCheckerLeft(self):
+        count = sum(1 for i in self.checkers if i.player.id == 1)
+        if count != 0:
+            count = sum(1 for i in self.checkers if i.player.id == 2)
+        return count
